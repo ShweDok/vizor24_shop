@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/123', function () {
+    logger()
+        ->channel('telegram')
+        ->debug('Test Log');
+    
+    return view('welcome');
+});
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});

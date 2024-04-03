@@ -1,33 +1,35 @@
 # How start project
- - composer install
- - ! create database vizor24_shop vizor24_shop_test
- - composer require barryvdh/laravel-debugbar --dev (установка debugbar)
 
- - composer require laravel/telescope
- - php artisan telescope:install
- 
- - Можно еще установить Mailpit для отслеживания отправленных электронных почт
+- composer install
+- ! create database vizor24_shop vizor24_shop_test
+- composer require barryvdh/laravel-debugbar --dev (установка debugbar)
 
- - npm install
- - npm install -D tailwindcss
- - npm install @tailwindcss/line-clamp
+- composer require laravel/telescope
+- php artisan telescope:install
 
- - Заменил в конфиге строку
-   - content: ["./app/**/*.{html,js}"],
- - на строку 
-   - content: ["./resources/views/*.blade.php"],
- - Т.к. надо было указать на место, где у нас хранятся шаблоны
+- Можно еще установить Mailpit для отслеживания отправленных электронных почт
 
- - npm install sass
+- npm install
+- npm install -D tailwindcss
+- npm install @tailwindcss/line-clamp
 
+- Заменил в конфиге строку
+    - content: ["./app/**/*.{html,js}"],
+- на строку
+    - content: ["./resources/views/*.blade.php"],
+- Т.к. надо было указать на место, где у нас хранятся шаблоны
+
+- npm install sass
 
 # Installation
- - php artisan storage:link
- - php artisan migrate
- - 
 
+- php artisan storage:link
+- php artisan migrate
 
- 
+# Installation - One command
+
+- php artisan shop:install
+
 # Deploy
 
 

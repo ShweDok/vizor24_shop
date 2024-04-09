@@ -16,7 +16,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Реестрообменник (из конфига)'),
+    'description' => env('APP_DESCRIPTION', ''),
+    'author' => env('APP_AUTHOR', 'ООО "ИПК", Евгений Назаров'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------

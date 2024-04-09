@@ -3,10 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 class TelegramLogException extends Exception
 {
-    public function render($request): \Illuminate\Http\JsonResponse
+    public function render(): JsonResponse
     {
         return response()->json(["error" => true, "message" => $this->getMessage()]);
     }

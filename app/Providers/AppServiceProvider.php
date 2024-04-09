@@ -28,20 +28,22 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!app()->isProduction());
         // Предупреждение, если insert и update полей, которых нет в свойстве fillable модели
         Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
-        // Предупреждение, если какой-то из запросов к базе данных выполняется больше, чем 5 секунд
-        DB::whenQueryingForLongerThan(500, function (Connection $connection) {
+        // Предупреждение, если какой-то из запросов к базе данных выполняется больше, чем N секунд
+        DB::whenQueryingForLongerThan(2000, function (Connection $connection) {
             logger()
                 ->channel('telegram')
-                ->debug('whenQueryingForLongerThan:' . $connection->query()->toSql());
+                ->debug('whenQueryingForLongerThan: ' . $connection->query()->toSql());
         });
-        // TODO: В 3 уроке что-то будем делать с request cycle
+
+        // Предупреждение, если какой-то запрос к базе выполняется дольше, чем N секунд
         $kernel = app(Kernel::class);
+        // Почему-то выполняется для всех запросов, даже если походов в базу данных не было
         $kernel->whenRequestLifecycleIsLongerThan(
             CarbonInterval::seconds(4),
             function () {
                 logger()
                     ->channel('telegram')
-                    ->debug('whenRequestLifecycleIsLongerThan:' . request()->url());
+                    ->debug('whenRequestLifecycleIsLongerThan: ' . request()->url());
             }
         );
     }

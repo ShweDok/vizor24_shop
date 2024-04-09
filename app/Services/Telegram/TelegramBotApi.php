@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 final class TelegramBotApi
 {
-    public const HOST = 'https://api.teleg123ram.org/bot';
+    public const HOST = 'https://api.telegram.org/bot';
 
     public static function sendMessage(string $token, int $chatId, string $text): bool
     {
